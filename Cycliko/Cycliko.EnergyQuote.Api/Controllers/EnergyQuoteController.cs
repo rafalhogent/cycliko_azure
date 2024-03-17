@@ -15,7 +15,9 @@ namespace Cycliko.EnergyQuote.Api.Controllers
             _energyService = energyService;
         }
 
-        public ActionResult<EnergyQuoteResponseDTO> CalculateEnergy(EnergyQuoteRequestDTO request)
+
+        [HttpPost]
+        public ActionResult<EnergyQuoteResponseDTO> CalculateEnergy([FromBody] EnergyQuoteRequestDTO request)
         {
             var energy = _energyService.Calculate(request);
             return energy;
