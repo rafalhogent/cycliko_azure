@@ -2,6 +2,8 @@ using Cycliko.EnergyQuote.Api.Service;
 using Microsoft.AspNetCore.RateLimiting;
 using System.Threading.RateLimiting;
 using System.Text.Json.Serialization;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Cycliko.EnergyQuote.Api
 {
@@ -10,7 +12,8 @@ namespace Cycliko.EnergyQuote.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers().AddJsonOptions(opt => {
+            builder.Services.AddControllers().AddJsonOptions(opt =>
+            {
                 opt.JsonSerializerOptions.Converters.Add(
                     new JsonStringEnumConverter());
             });
@@ -35,6 +38,15 @@ namespace Cycliko.EnergyQuote.Api
             var app = builder.Build();
             app.MapControllers();
             app.UseRateLimiter();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/error-development");
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }
 
             app.Run();
         }

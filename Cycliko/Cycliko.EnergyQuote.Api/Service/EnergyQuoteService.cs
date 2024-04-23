@@ -37,12 +37,17 @@ namespace Cycliko.EnergyQuote.Api.Service
                         Crr = coefficient of rolling resitance = 0.0032
              */
 
+
             var aeroDrag = 0.5 * _airDensity * Math.Pow(request.SpeedKph / 3.6, 2) * _cdAFactor * (request.RiderHeightCm / 175);
 
             var rollDrag = _rollingResistance * (request.RiderWeightKg + _bikeWeightKg);
 
             var totalEnergyKJ = (aeroDrag + rollDrag) * request.RaceDistanceKm * _gravityAccelerationMs2;
 
+            if (totalEnergyKJ < 0 )
+            {
+                throw new Exception("Energy calculation result out of acceptable range.");
+            }
             return new EnergyQuoteResponseDTO { EnergyKiloJoules = Math.Round(totalEnergyKJ, 2) };
         }
     }
