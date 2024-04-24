@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NSwag.AspNetCore" Version="14.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Cycliko.EnergyQuote.Api.Contracts\Cycliko.EnergyQuote.Api.Contracts.csproj" />
   </ItemGroup>
 

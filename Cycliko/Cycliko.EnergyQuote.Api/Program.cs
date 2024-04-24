@@ -35,9 +35,14 @@ namespace Cycliko.EnergyQuote.Api
 
             builder.Services.AddSingleton<IEnergyQuoteService>(quoteService);
 
+            builder.Services.AddOpenApiDocument();
+
             var app = builder.Build();
             app.MapControllers();
             app.UseRateLimiter();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi();
 
             if (app.Environment.IsDevelopment())
             {
