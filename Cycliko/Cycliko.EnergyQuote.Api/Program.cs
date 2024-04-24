@@ -4,6 +4,7 @@ using System.Threading.RateLimiting;
 using System.Text.Json.Serialization;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Cycliko.EnergyQuote.Api.Options;
 
 namespace Cycliko.EnergyQuote.Api
 {
@@ -31,9 +32,10 @@ namespace Cycliko.EnergyQuote.Api
                 });
             });
 
-            var quoteService = new EnergyQuoteService(9.81, 1, 0.3, 0.0032, 10);
+            builder.Services.Configure<EnergyQuoteServiceOptions>(
+            builder.Configuration.GetSection(key: nameof(EnergyQuoteServiceOptions)));
 
-            builder.Services.AddSingleton<IEnergyQuoteService>(quoteService);
+            builder.Services.AddSingleton<IEnergyQuoteService, EnergyQuoteService>();
 
             builder.Services.AddOpenApiDocument();
 

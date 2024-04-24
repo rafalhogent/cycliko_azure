@@ -1,23 +1,16 @@
 ﻿using Cycliko.EnergyQuote.Api.Contracts.DTO;
+using Microsoft.Extensions.Options;
+using Cycliko.EnergyQuote.Api.Options;
 
 namespace Cycliko.EnergyQuote.Api.Service
 {
     public class EnergyQuoteService : IEnergyQuoteService
     {
-        private readonly double _airDensity;
-        private readonly double _cdAFactor;
-        private readonly double _rollingResistance;
-        private readonly double _bikeWeightKg;
-        private readonly double _gravityAccelerationMs2;
-
-        public EnergyQuoteService(double gravityAccelerationMs2, double airDensity, double cdAFactor, double rollingResistance, double bikeWeightKg)
+      
+        private readonly EnergyQuoteServiceOptions _options;
+        public EnergyQuoteService(IOptions<EnergyQuoteServiceOptions> options)
         {
-            _airDensity = airDensity;
-            _rollingResistance = rollingResistance;
-            _bikeWeightKg = bikeWeightKg;
-            _cdAFactor = cdAFactor;
-            _gravityAccelerationMs2 = gravityAccelerationMs2;
-
+            _options = options.Value;
         }
 
         public EnergyQuoteResponseDTO Calculate(EnergyQuoteRequestDTO request)
@@ -38,11 +31,11 @@ namespace Cycliko.EnergyQuote.Api.Service
              */
 
 
-            var aeroDrag = 0.5 * _airDensity * Math.Pow(request.SpeedKph / 3.6, 2) * _cdAFactor * (request.RiderHeightCm / 175);
+            var aeroDrag = 0.5 * _options.AirDensity * Math.Pow(request.SpeedKph / 3.6, 2) * _options.CdAFactor * (request.RiderHeightCm / _options.AvgRiderHeightCm);
 
-            var rollDrag = _rollingResistance * (request.RiderWeightKg + _bikeWeightKg);
+            var rollDrag = _options.RollingResistance * (request.RiderWeightKg + _options.BikeWeightKg);
 
-            var totalEnergyKJ = (aeroDrag + rollDrag) * request.RaceDistanceKm * _gravityAccelerationMs2;
+            var totalEnergyKJ = (aeroDrag + rollDrag) * request.RaceDistanceKm * _options.GravityAccMs2;
 
             if (totalEnergyKJ < 0 )
             {
