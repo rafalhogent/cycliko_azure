@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cycliko.EnergyQuote.Api.Contracts\Cycliko.EnergyQuote.Api.Contracts.csproj" />
+    <ProjectReference Include="..\Cycliko.EnergyQuote.Storage.Contracts\Cycliko.EnergyQuote.Storage.Contracts.csproj" />
+    <ProjectReference Include="..\Cycliko.EnergyQuote.Storage\Cycliko.EnergyQuote.Storage.csproj" />
   </ItemGroup>
 
 </Project>

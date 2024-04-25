@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Cycliko.EnergyQuote.Api.Options;
+using Cycliko.EnergyQuote.Storage;
 
 namespace Cycliko.EnergyQuote.Api
 {
@@ -17,6 +18,9 @@ namespace Cycliko.EnergyQuote.Api
             {
                 opt.JsonSerializerOptions.Converters.Add(
                     new JsonStringEnumConverter());
+            }).AddMvcOptions(options =>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
             });
             ;
 
@@ -33,9 +37,13 @@ namespace Cycliko.EnergyQuote.Api
             });
 
             builder.Services.Configure<EnergyQuoteServiceOptions>(
-            builder.Configuration.GetSection(key: nameof(EnergyQuoteServiceOptions)));
+                builder.Configuration.GetSection(key: nameof(EnergyQuoteServiceOptions)));
 
-            builder.Services.AddSingleton<IEnergyQuoteService, EnergyQuoteService>();
+            builder.Services.Configure<EnergyQuoteRepoOptions>(
+                builder.Configuration.GetSection(key: nameof(EnergyQuoteRepoOptions)));
+
+            builder.Services.AddScoped<IEnergyQuoteRepo, EnergyQuoteRepo>();
+            builder.Services.AddScoped<IEnergyQuoteService, EnergyQuoteService>();
 
             builder.Services.AddOpenApiDocument();
 

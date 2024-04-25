@@ -4,6 +4,7 @@ namespace Cycliko.EnergyQuote.Api.Service
 {
     public interface IEnergyQuoteService
     {
-        EnergyQuoteResponseDTO Calculate(EnergyQuoteRequestDTO request);
+        Task<EnergyQuoteResponseDTO> CreateEnergyQuoteAsync(EnergyQuoteRequestDTO request);
+        Task<EnergyQuoteResponseDTO?> GetEnergyQuoteAsync(string id);
     }
 }

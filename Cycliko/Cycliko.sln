@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.EnergyQuote.Api", "Cycliko.EnergyQuote.Api\Cycliko.EnergyQuote.Api.csproj", "{3657AA19-E444-45B7-B315-F211CB098C38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.EnergyQuote.Api", "Cycliko.EnergyQuote.Api\Cycliko.EnergyQuote.Api.csproj", "{3657AA19-E444-45B7-B315-F211CB098C38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.EnergyQuote.Api.Contracts", "Cycliko.EnergyQuote.Api.Contracts\Cycliko.EnergyQuote.Api.Contracts.csproj", "{F8543737-335E-4363-843F-4846B5E02B11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.EnergyQuote.Api.Contracts", "Cycliko.EnergyQuote.Api.Contracts\Cycliko.EnergyQuote.Api.Contracts.csproj", "{F8543737-335E-4363-843F-4846B5E02B11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.EnergyQuote.Storage", "Cycliko.EnergyQuote.Storage\Cycliko.EnergyQuote.Storage.csproj", "{735C327C-907A-42F3-B11E-5C0E3DC4BF2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.EnergyQuote.Storage.Contracts", "Cycliko.EnergyQuote.Storage.Contracts\Cycliko.EnergyQuote.Storage.Contracts.csproj", "{8BDC4D0F-975B-4F11-BD90-A13D12D254FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{F8543737-335E-4363-843F-4846B5E02B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8543737-335E-4363-843F-4846B5E02B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8543737-335E-4363-843F-4846B5E02B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735C327C-907A-42F3-B11E-5C0E3DC4BF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735C327C-907A-42F3-B11E-5C0E3DC4BF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735C327C-907A-42F3-B11E-5C0E3DC4BF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735C327C-907A-42F3-B11E-5C0E3DC4BF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BDC4D0F-975B-4F11-BD90-A13D12D254FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BDC4D0F-975B-4F11-BD90-A13D12D254FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BDC4D0F-975B-4F11-BD90-A13D12D254FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BDC4D0F-975B-4F11-BD90-A13D12D254FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
