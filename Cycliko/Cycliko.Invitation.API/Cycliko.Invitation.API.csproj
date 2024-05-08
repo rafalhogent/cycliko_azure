@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cycliko.Invitation.Domain\Cycliko.Invitation.Domain.csproj" />
+    <ProjectReference Include="..\Cycliko.EnergyQuote.Api.Contracts\Cycliko.EnergyQuote.Api.Contracts.csproj" />
+    <ProjectReference Include="..\Cycliko.Invitation.Storage\Cycliko.Invitation.Storage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="7.3.0.2" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.8" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
