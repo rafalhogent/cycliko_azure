@@ -7,15 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.EnergyQuote.Api", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.EnergyQuote.Api.Contracts", "Cycliko.EnergyQuote.Api.Contracts\Cycliko.EnergyQuote.Api.Contracts.csproj", "{F8543737-335E-4363-843F-4846B5E02B11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.EnergyQuote.Storage", "Cycliko.EnergyQuote.Storage\Cycliko.EnergyQuote.Storage.csproj", "{735C327C-907A-42F3-B11E-5C0E3DC4BF2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.EnergyQuote.Storage", "Cycliko.EnergyQuote.Storage\Cycliko.EnergyQuote.Storage.csproj", "{735C327C-907A-42F3-B11E-5C0E3DC4BF2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.EnergyQuote.Storage.Contracts", "Cycliko.EnergyQuote.Storage.Contracts\Cycliko.EnergyQuote.Storage.Contracts.csproj", "{8BDC4D0F-975B-4F11-BD90-A13D12D254FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.EnergyQuote.Storage.Contracts", "Cycliko.EnergyQuote.Storage.Contracts\Cycliko.EnergyQuote.Storage.Contracts.csproj", "{8BDC4D0F-975B-4F11-BD90-A13D12D254FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.Invitation.Domain", "Cycliko.Invitation.Domain\Cycliko.Invitation.Domain.csproj", "{EE893FE9-DC7C-4ECD-8C13-5F01A2990C65}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.Invitation.Storage", "Cycliko.Invitation.Storage\Cycliko.Invitation.Storage.csproj", "{0D9BA309-F718-40EA-B1C6-9180F5BD608F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.Invitation.API", "Cycliko.Invitation.API\Cycliko.Invitation.API.csproj", "{BC235EC3-6264-415F-999C-B7658F305887}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.Invitation.Domain.Tests", "Cycliko.Invitation.Domain.Tests\Cycliko.Invitation.Domain.Tests.csproj", "{C4A57A10-FD02-4B74-B3B3-EC1E485013FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{BC235EC3-6264-415F-999C-B7658F305887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC235EC3-6264-415F-999C-B7658F305887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC235EC3-6264-415F-999C-B7658F305887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A57A10-FD02-4B74-B3B3-EC1E485013FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A57A10-FD02-4B74-B3B3-EC1E485013FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A57A10-FD02-4B74-B3B3-EC1E485013FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A57A10-FD02-4B74-B3B3-EC1E485013FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
