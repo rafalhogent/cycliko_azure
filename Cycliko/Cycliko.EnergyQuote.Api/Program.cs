@@ -20,8 +20,7 @@ namespace Cycliko.EnergyQuote.Api
             builder.Services.AddCyclikoOptions(builder.Configuration);
             builder.Services.AddCyclikoRateLimiter();
             builder.Services.AddCyclikoEnergyServices();
-
-            builder.Services.AddOpenApiDocument();
+            builder.Services.AddCyclikoOpenApiDoc();
 
             var app = builder.Build();
             app.MapControllers();

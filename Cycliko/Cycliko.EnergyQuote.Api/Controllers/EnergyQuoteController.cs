@@ -17,6 +17,13 @@ namespace Cycliko.EnergyQuote.Api.Controllers
             _energyService = energyService;
         }
 
+        [HttpGet]
+        [Route("/")]
+        public string GetEnergyWelcomeInfo()
+        {
+            return "Welcome to Cycliko Energy Quotes";
+        }
+
         [HttpPost]
         [ProducesResponseType<EnergyQuoteResponseDTO>(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

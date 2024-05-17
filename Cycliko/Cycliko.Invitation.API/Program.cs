@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Cycliko.EnergyQuote.Api.Contracts.DTO;
 using Cycliko.Invitation.API;
+using Cycliko.Invitation.API.Extensions;
 using Cycliko.Invitation.Domain;
 using Cycliko.Invitation.Storage;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -23,10 +24,13 @@ builder.Services.Configure<InvitationRepoOptions>(
 builder.Services.AddScoped<IInvitationRepository, InvitationRepository>();
 builder.Services.AddScoped<IInvitationDomainController, InvitationDomainController>();
 builder.Services.AddHttpClient();
+builder.Services.AddCyclikoOpenApiDoc();
 QuestPDF.Settings.License = LicenseType.Community;
 
 var app = builder.Build();
 
+app.UseOpenApi();
+app.UseSwaggerUi();
 
 app.MapGet("/", () => "Hello Cycliko Invitations!");
 
