@@ -6,6 +6,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Cycliko.EnergyQuote.Api.Options;
 using Cycliko.EnergyQuote.Storage;
+using Cycliko.EnergyQuote.Api.Extensions;
 
 namespace Cycliko.EnergyQuote.Api
 {
@@ -14,36 +15,11 @@ namespace Cycliko.EnergyQuote.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddControllers().AddJsonOptions(opt =>
-            {
-                opt.JsonSerializerOptions.Converters.Add(
-                    new JsonStringEnumConverter());
-            }).AddMvcOptions(options =>
-            {
-                options.SuppressAsyncSuffixInActionNames = false;
-            });
-            ;
 
-            builder.Services.AddRateLimiter(rl =>
-            {
-                rl.AddFixedWindowLimiter(policyName: "cyclikoFixed", options =>
-                {
-                    options.PermitLimit = 3;
-                    options.Window = TimeSpan.FromSeconds(10);
-                    options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-                    options.QueueLimit = 0;
-
-                });
-            });
-
-            builder.Services.Configure<EnergyQuoteServiceOptions>(
-                builder.Configuration.GetSection(key: nameof(EnergyQuoteServiceOptions)));
-
-            builder.Services.Configure<EnergyQuoteRepoOptions>(
-                builder.Configuration.GetSection(key: nameof(EnergyQuoteRepoOptions)));
-
-            builder.Services.AddScoped<IEnergyQuoteRepo, EnergyQuoteRepo>();
-            builder.Services.AddScoped<IEnergyQuoteService, EnergyQuoteService>();
+            builder.Services.AddCyclikoControllers();
+            builder.Services.AddCyclikoOptions(builder.Configuration);
+            builder.Services.AddCyclikoRateLimiter();
+            builder.Services.AddCyclikoEnergyServices();
 
             builder.Services.AddOpenApiDocument();
 
