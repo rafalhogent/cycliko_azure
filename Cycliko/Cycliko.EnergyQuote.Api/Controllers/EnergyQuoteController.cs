@@ -1,5 +1,6 @@
 ﻿using Cycliko.EnergyQuote.Api.Contracts.DTO;
 using Cycliko.EnergyQuote.Api.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
@@ -7,6 +8,7 @@ namespace Cycliko.EnergyQuote.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     [EnableRateLimiting("cyclikoFixed")]
     public class EnergyQuoteController : ControllerBase
     {
@@ -25,6 +27,7 @@ namespace Cycliko.EnergyQuote.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "EnergyQuoteWritePolicy")]
         [ProducesResponseType<EnergyQuoteResponseDTO>(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<EnergyQuoteResponseDTO>> CreateEnergyQuoteAsync([FromBody] EnergyQuoteRequestDTO request)
@@ -35,6 +38,7 @@ namespace Cycliko.EnergyQuote.Api.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [Authorize(Policy = "EnergyQuoteReadPolicy")]
         [ProducesResponseType<EnergyQuoteResponseDTO>(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

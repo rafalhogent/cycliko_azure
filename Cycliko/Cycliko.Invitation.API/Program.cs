@@ -5,6 +5,7 @@ using Cycliko.Invitation.API;
 using Cycliko.Invitation.API.Extensions;
 using Cycliko.Invitation.Domain;
 using Cycliko.Invitation.Storage;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -36,7 +37,7 @@ app.MapGet("/", () => "Hello Cycliko Invitations!");
 
 
 app.MapPost("/api/invitations",
-async Task<Results<Ok<GetInvitationResponseDto>, FileStreamHttpResult, NotFound<string>, CreatedAtRoute<InvitationCreationResponseDto>>> (
+async Task<Results<Ok<GetInvitationResponseDto>, FileStreamHttpResult, NotFound<string>,  CreatedAtRoute<InvitationCreationResponseDto>>> (
     IInvitationDomainController domainController,
     [FromBody] CreateInvitationRequestDto invitationDto,
     IHttpClientFactory httpClientFactory,
@@ -44,6 +45,18 @@ async Task<Results<Ok<GetInvitationResponseDto>, FileStreamHttpResult, NotFound<
     ) =>
 {
     using HttpClient client = httpClientFactory.CreateClient();
+
+    var discoveryDoc = await client.GetDiscoveryDocumentAsync(quoteClientOptions.Value.DiscoveryDocURL);
+    var token = await client.RequestClientCredentialsTokenAsync(
+        new ClientCredentialsTokenRequest
+        {
+            Address = discoveryDoc.TokenEndpoint,
+            ClientId = "internal-cycliko-invitations",
+            ClientSecret = quoteClientOptions.Value.SecretTokenIntern,
+            Scope = "cycliko.energyquote.api.READ"
+        });
+
+    client.SetBearerToken(token.AccessToken!);
 
     var options = new JsonSerializerOptions();
     options.PropertyNameCaseInsensitive = true;

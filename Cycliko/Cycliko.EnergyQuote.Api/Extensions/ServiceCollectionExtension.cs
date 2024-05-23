@@ -15,6 +15,7 @@ namespace Cycliko.EnergyQuote.Api.Extensions
                 configuration.GetSection(key: nameof(EnergyQuoteServiceOptions)));
             services.Configure<EnergyQuoteRepoOptions>(
                 configuration.GetSection(key: nameof(EnergyQuoteRepoOptions)));
+            services.Configure<IdentityOptions>(configuration.GetSection(key: nameof(IdentityOptions)));
 
             return services;
         }
