@@ -7,7 +7,7 @@ namespace Cycliko.IdentityServer
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
             // uncomment if you want to add a UI
-            //builder.Services.AddRazorPages();
+            builder.Services.AddRazorPages();
 
 
             // SecretsOptions ->  in appsettings.json;
@@ -26,7 +26,8 @@ namespace Cycliko.IdentityServer
                 })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
-                .AddInMemoryClients(clientsService.Clients);
+                .AddInMemoryClients(clientsService.Clients)
+                .AddTestUsers(TestUsers.Users);
 
             return builder.Build();
         }
@@ -41,14 +42,14 @@ namespace Cycliko.IdentityServer
             }
 
             // uncomment if you want to add a UI
-            //app.UseStaticFiles();
-            //app.UseRouting();
+            app.UseStaticFiles();
+            app.UseRouting();
 
             app.UseIdentityServer();
 
             // uncomment if you want to add a UI
-            //app.UseAuthorization();
-            //app.MapRazorPages().RequireAuthorization();
+            app.UseAuthorization();
+            app.MapRazorPages().RequireAuthorization();
 
             return app;
         }
