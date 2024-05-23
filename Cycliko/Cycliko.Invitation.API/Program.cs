@@ -35,6 +35,15 @@ app.UseSwaggerUi();
 
 app.MapGet("/", () => "Hello Cycliko Invitations!");
 
+app.MapGet("/api/locations", async Task<object> (IHttpClientFactory httpClientFactory, [FromBody] LocationsRequestDto searchDto) =>
+{
+    using HttpClient client = httpClientFactory.CreateClient();
+
+    var abc = $"https://geo.api.vlaanderen.be/geolocation/v1/Suggestion?q={searchDto.QueryText}";
+    var response = await client.GetFromJsonAsync<object>(abc);
+
+    return response;
+});
 
 app.MapPost("/api/invitations",
 async Task<Results<Ok<GetInvitationResponseDto>, FileStreamHttpResult, NotFound<string>,  CreatedAtRoute<InvitationCreationResponseDto>>> (
