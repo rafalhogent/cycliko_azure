@@ -1,4 +1,6 @@
+using Cycliko.IdentityServer.Options;
 using Serilog;
+using static System.Net.WebRequestMethods;
 
 namespace Cycliko.IdentityServer
 {
@@ -10,12 +12,16 @@ namespace Cycliko.IdentityServer
             builder.Services.AddRazorPages();
 
 
-            // SecretsOptions ->  in appsettings.json;
+            // SecretsOptions & WebAppOptions ->  in appsettings.json;
             var identityOptions = builder.Configuration.GetSection(nameof(SecretsOptions));
             var apiSecret = identityOptions[nameof(SecretsOptions.SecretTokenApi)];
             var internSecret = identityOptions[nameof(SecretsOptions.SecretTokenIntern)];
 
-            var clientsService = new ClientsService(apiSecret, internSecret);
+            var webAppOptions = builder.Configuration.GetSection(nameof(WebAppOptions));
+            var redirectUris = webAppOptions[nameof(WebAppOptions.RedirectUris)];
+            var postLogoutUris = webAppOptions[nameof(WebAppOptions.PostLogoutRedirectUris)];
+
+            var clientsService = new ClientsService(apiSecret, internSecret, redirectUris, postLogoutUris);
 
             
 

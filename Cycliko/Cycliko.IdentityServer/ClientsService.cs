@@ -1,4 +1,5 @@
-﻿using Duende.IdentityServer.Models;
+﻿using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
 using Microsoft.Extensions.Options;
 
 namespace Cycliko.IdentityServer
@@ -8,11 +9,15 @@ namespace Cycliko.IdentityServer
 
         private readonly string _apiSecret;
         private readonly string _internSecret;
+        private readonly string _webAppRedirectUri;
+        private readonly string _postLogoutRedirectUri;
 
-        public ClientsService(string apiSecret, string internSecret)
+        public ClientsService(string apiSecret, string internSecret, string webAppRedirectUri, string postLogoutRedirectUri)
         {
             _apiSecret = apiSecret;
             _internSecret = internSecret;
+            _webAppRedirectUri = webAppRedirectUri;
+            _postLogoutRedirectUri = postLogoutRedirectUri;
         }
 
 
@@ -30,6 +35,20 @@ namespace Cycliko.IdentityServer
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = { new Secret(_internSecret.Sha256())},
                     AllowedScopes = { "cycliko.energyquote.api.READ" }
+                },
+                new Client
+                {
+                    ClientId = "cycliko-web-client",
+                    ClientSecrets = {new Secret(_internSecret.Sha256())},
+                    AllowedGrantTypes = GrantTypes.Code,
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        
+                    },
+                    RedirectUris = { _webAppRedirectUri },
+                    PostLogoutRedirectUris = { _postLogoutRedirectUri },                    
+
                 }
     };
     }
