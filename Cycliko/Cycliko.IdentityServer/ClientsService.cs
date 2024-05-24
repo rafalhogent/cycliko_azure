@@ -44,7 +44,7 @@ namespace Cycliko.IdentityServer
                     AllowedScopes = {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        
+                        "cycliko.energyquote.api.READ"
                     },
                     RedirectUris = { _webAppRedirectUri },
                     PostLogoutRedirectUris = { _postLogoutRedirectUri },                    

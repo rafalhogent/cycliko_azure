@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.Invitation.Domain.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.EnergyQuote.Api.Tests", "Cycliko.EnergyQuote.Api.Tests\Cycliko.EnergyQuote.Api.Tests.csproj", "{AA81E307-16CD-48E3-AFDE-4338EE7D414F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.IdentityServer", "Cycliko.IdentityServer\Cycliko.IdentityServer.csproj", "{969C4DAC-1E07-41AF-AA98-FFFE2A79DE70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.IdentityServer", "Cycliko.IdentityServer\Cycliko.IdentityServer.csproj", "{969C4DAC-1E07-41AF-AA98-FFFE2A79DE70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cycliko.Web", "Cycliko.Web\Cycliko.Web.csproj", "{79677056-67A7-4FCE-9650-AA206BAC1E26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cycliko.Web", "Cycliko.Web\Cycliko.Web.csproj", "{79677056-67A7-4FCE-9650-AA206BAC1E26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
