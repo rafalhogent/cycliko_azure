@@ -12,6 +12,13 @@ namespace Cycliko.Web.Pages
         public string Json { get; set; } = string.Empty;
         public string? qID { get; set; } = string.Empty;
 
+        private readonly IOptions<WebAppOptions> _options;
+
+        public GetEnergyQuoteModel(IOptions<WebAppOptions> options)
+        {
+            _options = options;
+        }
+
         public async Task OnGet(string? id)
         {
 
@@ -20,7 +27,7 @@ namespace Cycliko.Web.Pages
             var client = new HttpClient();
             client.SetBearerToken(accessToken);
 
-            var response = await client.GetAsync($"https://localhost:7246/api/EnergyQuote/{id}");
+            var response = await client.GetAsync($"{_options.Value.EnergyQuoteUri}/api/EnergyQuote/{id}");
             var stringContent = await response.Content.ReadAsStringAsync();
 
             qID = id;

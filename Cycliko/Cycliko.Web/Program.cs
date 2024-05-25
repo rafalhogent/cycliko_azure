@@ -16,6 +16,8 @@ namespace Cycliko.Web
             var clientSecret = appOptions[nameof(WebAppOptions.ClientSecretToken)];
             var authUri = appOptions[nameof(WebAppOptions.AuthorityUri)];
 
+            builder.Services.Configure<WebAppOptions>(builder.Configuration.GetSection(key: nameof(WebAppOptions)));
+
             // Authentication
             builder.Services.AddAuthentication(options =>
             {
