@@ -1,0 +1,33 @@
+﻿@page
+@model Cycliko.Web.Pages.SendEnergyQuoteModel
+@{
+}
+
+<form method="POST">
+    <legend>POST Energy Quote :</legend>
+
+    <p>
+        <label for="raceDist" class="form-label">Race Distance [km]</label>
+        <input asp-for="RequestViewModel.RaceDistanceKm" type="number" class="form-control" id="raceDist" />
+    </p>
+    <p>
+        <label for="raceType" class="form-label">Race Type (Flat/Hilly/Mountainous)</label>
+        <input asp-for="RequestViewModel.RaceType" type="text" class="form-control" id="raceType" />
+    </p>
+    <p>
+        <label for="riderHeight" class="form-label">Rider Height [cm]</label>
+        <input asp-for="RequestViewModel.RiderHeightCm" type="number" class="form-control" id="riderHeight" />
+    </p>
+    <p>
+        <label for="riderWeight" class="form-label">Rider Weight [kg]</label>
+        <input asp-for="RequestViewModel.RiderWeightKg" type="number" class="form-control" id="riderWeight" />
+    </p>
+    <p>
+        <label for="speed" class="form-label">Speed</label>
+        <input asp-for="RequestViewModel.SpeedKph" type="number" class="form-control" id="speed" />
+    </p>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div class="text-danger">@Model.ErrorMsg</div>

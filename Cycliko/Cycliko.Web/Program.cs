@@ -37,6 +37,7 @@ namespace Cycliko.Web
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
                 options.Scope.Add("cycliko.energyquote.api.READ");
+                options.Scope.Add("cycliko.energyquote.api.WRITE");
 
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.MapInboundClaims = false;
