@@ -57,5 +57,5 @@ az webapp up `
 
 ## Contribute
  - Feel free to download/clone/fork this repository.
- - [Submit bugs, describe isues](https://github.com/rafalhogent/cycliko_azure/issues)
+ - [Submit bugs, describe issues](https://github.com/rafalhogent/cycliko_azure/issues)
 
